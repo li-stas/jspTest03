@@ -11,12 +11,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <title>Add new user</title>
+        <title>Добавление результатов</title>
     </head>
 
     <body>
         <div>
-            <h1>Super app!</h1>
+            <h1>Онлайн-калькулятор</h1>
         </div>
 
         <div>
@@ -27,14 +27,14 @@
             %>
             <div>
                 <div>
-                    <h2>Добавить вычисление</h2>
+                    <h2>Добавить вычисление (десятичный разделитель .(точка))</h2>
                 </div>
 
                 <form method="post">
-                    <label>Превое значение (целое):
+                    <label>Первое значение:
                         <input type="one" name="name"><br/>
                     </label>
-                    <label>Второе значение (целое):
+                    <label>Второе значение:
                         <input type="two" name="pass"><br/>
                     </label>
                     <p>

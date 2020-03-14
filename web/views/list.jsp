@@ -12,7 +12,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Users list</title>
+    <title>Список результатов</title>
 </head>
 <body>
   <%-- page "Users list"--%>
@@ -27,7 +27,7 @@
               }
               out.println("</ui>");
           } else {
-              out.println("<p>There are no users yet!</p>");
+              out.println("<p>Нет результатов для отображения!</p>");
           }
       %>
       <%--<%

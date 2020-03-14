@@ -37,23 +37,29 @@ public class User {
     }
 
     public void eval() {
-        int nNum1 = str2Num(name,menu);
-        int nNum2 = str2Num(password,menu);
+        double nNum1 =  str2Num(name,menu);
+        double nNum2 =  str2Num(password,menu);
+
 
         System.out.println(" " + nNum1 + nNum2);
 
         switch (menu){
             case "1":
-                name = String.format("%d + %d = %d", nNum1, nNum2, nNum1 + nNum2 );
+                name = String.format("%f + %f = %f", nNum1, nNum2, (nNum1 + nNum2) );
                 break;
             case "2":
-                name = String.format("%d - %d = %d", nNum1, nNum2, nNum1 - nNum2 );
+                name = String.format("%f - %f = %f", nNum1, nNum2, (nNum1 - nNum2) );
                 break;
             case "3":
-                name = String.format("%d * %d = %d", nNum1, nNum2, nNum1 * nNum2 );
+                name = String.format("%f * %f = %f", nNum1, nNum2, (nNum1 * nNum2) );
                 break;
             case "4":
-                name = String.format("%d / %d = %d", nNum1, nNum2, nNum1 / nNum2 );
+                if ( nNum2 == 0 ) {
+                    name = String.format("%f / %f = %s",  nNum1,  nNum2, "ошибка! деление на 0" );
+                } else {
+                    name = String.format("%f / %f = %f",  nNum1,  nNum2, (nNum1 / nNum2) );
+                }
+
                 break;
         }
         System.out.println(" " + name);
@@ -87,13 +93,11 @@ public class User {
         return result;
     }
 
-    private int str2Num( String name, String menu) {
-        int nNum = 0;
+    private double str2Num( String name, String menu) {
+        double nNum = 0;
         try {
-            nNum = Integer.parseInt(name);
-            if ( nNum ==0 && menu.equals("4")) {
-                nNum = 1;
-            }
+            //nNum = Integer.parseInt(name);
+            nNum = Double.parseDouble(name);
 
         } catch ( NumberFormatException e) {
             switch (menu){
