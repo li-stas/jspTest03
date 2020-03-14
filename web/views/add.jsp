@@ -22,31 +22,31 @@
         <div>
             <%
                 if (request.getAttribute("userName") != null) {
-                    out.println("<p>User '" + request.getAttribute("userName") + "' added!</p>");
+                    out.println("<p>Результат '" + request.getAttribute("userName") + "' добавлен!</p>");
                 }
             %>
             <div>
                 <div>
-                    <h2>Add user</h2>
+                    <h2>Добавить вычисление</h2>
                 </div>
 
                 <form method="post">
-                    <label>Name:
-                        <input type="text" name="name"><br/>
+                    <label>Превое значение (целое):
+                        <input type="one" name="name"><br/>
                     </label>
-                    <label>Password:
-                        <input type="password" name="pass"><br/>
+                    <label>Второе значение (целое):
+                        <input type="two" name="pass"><br/>
                     </label>
                     <p>
                         <select name="menu" size="1">
-                            <option value="first">Первая позиция</option>
-                            <option selected="selected" value="second">Вторая позиция</option>
-                            <option value="third">Третья позиция</option>
-                            <option value="fourth">Четвертая позиция</option>
+                            <option selected="selected" value="1">Сложить</option>
+                            <option value="2">Вычесть</option>
+                            <option value="3">Умножить</option>
+                            <option value="4">Разделить</option>
                         </select>
                     </p>
 
-                    <button type="submit">Submit</button>
+                    <button type="submit">Выполнить</button>
                 </form>
             </div>
         </div>

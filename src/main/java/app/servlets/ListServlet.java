@@ -17,6 +17,7 @@ public class ListServlet extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         /*
         получить из модели список имен пользователей и передать их во вьюху,
         которая их получит и  отобразит.    воспользуемся объектом запроса, который мы получили от Tomcat.

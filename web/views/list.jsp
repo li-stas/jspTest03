@@ -40,5 +40,8 @@
           }
       %>--%>
   </ul>
+  <div>
+      <button onclick="location.href='/'">Back to main</button>
+  </div>
 </body>
 </html>

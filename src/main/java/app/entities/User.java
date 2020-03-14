@@ -1,8 +1,11 @@
 package app.entities;
 
+import java.io.IOException;
+
 public class User {
     private String name;
     private String password;
+    private String menu;
 
     public User() {
     }
@@ -12,6 +15,11 @@ public class User {
         this.password = password;
     }
 
+    public User(String name, String password, String menu) {
+        this.name = name;
+        this.password = password;
+        this.menu = menu;
+    }
     public String getName() {
         return name;
     }
@@ -28,11 +36,35 @@ public class User {
         this.password = password;
     }
 
+    public void eval() {
+        int nNum1 = str2Num(name,menu);
+        int nNum2 = str2Num(password,menu);
+
+        System.out.println(" " + nNum1 + nNum2);
+
+        switch (menu){
+            case "1":
+                name = String.format("%d + %d = %d", nNum1, nNum2, nNum1 + nNum2 );
+                break;
+            case "2":
+                name = String.format("%d - %d = %d", nNum1, nNum2, nNum1 - nNum2 );
+                break;
+            case "3":
+                name = String.format("%d * %d = %d", nNum1, nNum2, nNum1 * nNum2 );
+                break;
+            case "4":
+                name = String.format("%d / %d = %d", nNum1, nNum2, nNum1 / nNum2 );
+                break;
+        }
+        System.out.println(" " + name);
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "name='" + name + '\'' +
                 ", password='" + password + '\'' +
+                ", menu='" + menu + '\'' +
                 '}';
     }
 
@@ -53,5 +85,30 @@ public class User {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
+    }
+
+    private int str2Num( String name, String menu) {
+        int nNum = 0;
+        try {
+            nNum = Integer.parseInt(name);
+            if ( nNum ==0 && menu.equals("4")) {
+                nNum = 1;
+            }
+
+        } catch ( NumberFormatException e) {
+            switch (menu){
+                case "1":
+                    break;
+                case "2":
+                    break;
+                case "3":
+                    break;
+                case "4":
+                    nNum = 1;
+                    break;
+            }
+
+        }
+        return nNum;
     }
 }
