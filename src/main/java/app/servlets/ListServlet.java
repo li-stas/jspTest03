@@ -43,8 +43,5 @@ public class ListServlet extends HttpServlet {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/list.jsp");
         requestDispatcher.forward(req, resp);
     }
-    protected void doGet01(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter writer = resp.getWriter();
-        writer.println("Method GET from ListServlet");
-    }
+
 }

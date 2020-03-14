@@ -1,7 +1,5 @@
 package app.entities;
 
-import java.io.IOException;
-
 public class User {
     private String name;
     private String password;
@@ -36,33 +34,12 @@ public class User {
         this.password = password;
     }
 
-    public void eval() {
-        double nNum1 =  str2Num(name,menu);
-        double nNum2 =  str2Num(password,menu);
+    public String getMenu() {
+        return menu;
+    }
 
-
-        System.out.println(" " + nNum1 + nNum2);
-
-        switch (menu){
-            case "1":
-                name = String.format("%f + %f = %f", nNum1, nNum2, (nNum1 + nNum2) );
-                break;
-            case "2":
-                name = String.format("%f - %f = %f", nNum1, nNum2, (nNum1 - nNum2) );
-                break;
-            case "3":
-                name = String.format("%f * %f = %f", nNum1, nNum2, (nNum1 * nNum2) );
-                break;
-            case "4":
-                if ( nNum2 == 0 ) {
-                    name = String.format("%f / %f = %s",  nNum1,  nNum2, "ошибка! деление на 0" );
-                } else {
-                    name = String.format("%f / %f = %f",  nNum1,  nNum2, (nNum1 / nNum2) );
-                }
-
-                break;
-        }
-        System.out.println(" " + name);
+    public void setMenu(String menu) {
+        this.menu = menu;
     }
 
     @Override
@@ -91,6 +68,34 @@ public class User {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
+    }
+
+    public void evalCalc() {
+        double nNum1 =  str2Num(name, menu);
+        double nNum2 =  str2Num(password, menu);
+
+        System.out.printf("nNum1=%f nNum2=%f ",nNum1, nNum2);
+
+        switch (menu){
+            case "1":
+                name = String.format("%f + %f = %f", nNum1, nNum2, (nNum1 + nNum2) );
+                break;
+            case "2":
+                name = String.format("%f - %f = %f", nNum1, nNum2, (nNum1 - nNum2) );
+                break;
+            case "3":
+                name = String.format("%f * %f = %f", nNum1, nNum2, (nNum1 * nNum2) );
+                break;
+            case "4":
+                if ( nNum2 == 0 ) {
+                    name = String.format("%f / %s = %s",  nNum1,  password, "ошибка! деление на 0" );
+                } else {
+                    name = String.format("%f / %f = %f",  nNum1,  nNum2, (nNum1 / nNum2) );
+                }
+
+                break;
+        }
+        System.out.println(" " + name);
     }
 
     private double str2Num( String name, String menu) {

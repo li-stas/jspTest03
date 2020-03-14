@@ -24,46 +24,7 @@ public class AddServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/add.jsp");
-        requestDispatcher.forward(req, resp);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-        String name = req.getParameter("name");
-        String password = req.getParameter("pass");
-        String menu = req.getParameter("menu");
-
-        User user = new User(name, password, menu);
-        //System.out.println(user.toString());
-        user.eval();
-
-        Model model = Model.getInstance();
-        model.add(user);
-
-        //req.setAttribute("userName", name);
-        req.setAttribute("userName", user.getName());
-        doGet(req, resp);
-    }
-
-    protected void doGet03(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        /*
-        вытащим из запроса параметры name и pass, которые отправила форма (если вы их в форме назвали по-другому
-        — тогда именно те названия и пишете). После этого создадим объект нашего пользователя,
-        используя полученные данные. Потом получим объект модели и добавим созданного пользователя в модель.
-         */
-
-        String name = req.getParameter("name");
-        String password = req.getParameter("pass");
-        User user = new User(name, password);
-        Model model = Model.getInstance();
-        model.add(user);
-
-    }
-
-    protected void doGet02(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        /*
+            /*
         управление из сервлетов в jsp
 
         - получаем из объекта запроса объект диспетчера запросов, куда передаем адрес jsp странички,
@@ -74,8 +35,33 @@ public class AddServlet extends HttpServlet {
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/add.jsp");
         requestDispatcher.forward(req, resp);
-
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+         /*
+        вытащим из запроса параметры name и pass, которые отправила форма (если вы их в форме назвали по-другому
+        — тогда именно те названия и пишете). После этого создадим объект нашего пользователя,
+        используя полученные данные. Потом получим объект модели и добавим созданного пользователя в модель.
+         */
+        String name = req.getParameter("name");
+        String password = req.getParameter("pass");
+        String menu = req.getParameter("menu");
+
+        User user = new User(name, password, menu);
+        //System.out.println(user.toString());
+        user.evalCalc(); // расчет данных
+
+        // добавление
+        Model model = Model.getInstance();
+        model.add(user);
+
+        //req.setAttribute("userName", name);
+        req.setAttribute("userName", user.getName());
+        doGet(req, resp);
+    }
+
     protected void doGet01(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         /*
         метод принимает два обьекта: req (запрос) и resp (ответ). Это те самые объекты, которые
