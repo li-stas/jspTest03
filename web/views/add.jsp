@@ -37,6 +37,15 @@
                     <label>Password:
                         <input type="password" name="pass"><br/>
                     </label>
+                    <p>
+                        <select name="menu" size="1">
+                            <option value="first">Первая позиция</option>
+                            <option selected="selected" value="second">Вторая позиция</option>
+                            <option value="third">Третья позиция</option>
+                            <option value="fourth">Четвертая позиция</option>
+                        </select>
+                    </p>
+
                     <button type="submit">Submit</button>
                 </form>
             </div>
